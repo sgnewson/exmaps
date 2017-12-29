@@ -35,8 +35,7 @@ function initialize() {
     theMap = createMap();
     setupSelectionRectangle(theMap);
 
-    var loadInteractiveLayers = false;
-    loadLayers(theMap, loadInteractiveLayers);
+    loadLayers(theMap);
     loadLabels(theMap);
 
     setupGeologyButton(theMap);
