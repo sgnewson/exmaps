@@ -11,3 +11,11 @@
     float: right;
     font-size: 14pt;
 }
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+} 
