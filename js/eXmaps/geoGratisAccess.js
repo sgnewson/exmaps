@@ -28,10 +28,10 @@ function activateGeoGratisSearch(map) {
 
         enableDisableSearchButton(selectionBounds);
 
-        $("#northBox").val(selectionBounds.getNorthEast().lat());
-        $("#eastBox").val(selectionBounds.getNorthEast().lng());
-        $("#southBox").val(selectionBounds.getSouthWest().lat());
-        $("#westBox").val(selectionBounds.getSouthWest().lng());
+        $("#northBox").text(selectionBounds.getNorthEast().lat());
+        $("#eastBox").text(selectionBounds.getNorthEast().lng());
+        $("#southBox").text(selectionBounds.getSouthWest().lat());
+        $("#westBox").text(selectionBounds.getSouthWest().lng());
     });
 }
 
