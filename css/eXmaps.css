@@ -1,0 +1,13 @@
+#mapCanvas {
+    width: 100%;
+    height: 600px;
+}
+
+.disabledMap {
+    pointer-events: none;
+}
+
+#CoverPopButtons button {
+    float: right;
+    font-size: 14pt;
+}
