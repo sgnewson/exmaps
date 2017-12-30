@@ -28,6 +28,10 @@ function setupSelectionRectangle(map) {
         $("#eastBox").text(selectionBounds.getNorthEast().lng());
         $("#southBox").text(selectionBounds.getSouthWest().lat());
         $("#westBox").text(selectionBounds.getSouthWest().lng());
+
+        $("#gscASeriesButton").prop('disabled', false);
+        $("#gscPreliminaryButton").prop('disabled', false);
+        $("#gscPapersButton").prop('disabled', false);
     });
 }
 
