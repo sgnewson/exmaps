@@ -46,7 +46,12 @@ function initialize() {
 }
 
 function geoscanSearchUrl(collection) {
-    return 'https://geoscan.nrcan.gc.ca/starweb/geoscan/servlet.starweb?path=geoscan/shorte.web&search1=(((MINLNG1=%221883.9185%22:A W/O MAXLNG1=_:%221885.6543%22) W/O (MINLAT1=%222051.2715%22:A W/O MAXLAT1=_:%222052.3850%22)) AND (SER,SSER=' + collection + '))';
+    var minLng = 2000 + -116.08154296875;
+    var maxLng = 2000 + -114.345703125;
+    var minLat = 2000 + 51.27153858904847;
+    var maxLat = 2000 + 52.38498792177971;
+
+    return 'https://geoscan.nrcan.gc.ca/starweb/geoscan/servlet.starweb?path=geoscan/shorte.web&search1=(((MINLNG1="' + minLng + '":A W/O MAXLNG1=_:"' + maxLng + '") W/O (MINLAT1="' + minLat + '":A W/O MAXLAT1=_:"' + maxLat + '")) AND (SER,SSER=' + collection + '))';
 }
 
 function createMap() {
