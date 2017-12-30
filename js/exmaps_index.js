@@ -39,6 +39,10 @@ function initialize() {
     loadLabels(theMap);
 
     setupGeologyButton(theMap);
+
+    $("#gscASeriesButton").click(function() {window.open('https://geoscan.nrcan.gc.ca/starweb/geoscan/servlet.starweb?path=geoscan/shorte.web&search1=(((MINLNG1=%221883.9185%22:A W/O MAXLNG1=_:%221885.6543%22) W/O (MINLAT1=%222051.2715%22:A W/O MAXLAT1=_:%222052.3850%22)) AND (SER,SSER=GSCMAP-A))', '_blank')});
+    $("#gscPreliminaryButton").click(function() {window.open('https://geoscan.nrcan.gc.ca/starweb/geoscan/servlet.starweb?path=geoscan/shorte.web&search1=(((MINLNG1=%221883.9185%22:A W/O MAXLNG1=_:%221885.6543%22) W/O (MINLAT1=%222051.2715%22:A W/O MAXLAT1=_:%222052.3850%22)) AND (SER,SSER=GSCPRMAP))', '_blank')});
+    $("#gscPapersButton").click(function() {window.open('https://geoscan.nrcan.gc.ca/starweb/geoscan/servlet.starweb?path=geoscan/shorte.web&search1=(((MINLNG1=%221883.9185%22:A W/O MAXLNG1=_:%221885.6543%22) W/O (MINLAT1=%222051.2715%22:A W/O MAXLAT1=_:%222052.3850%22)) AND (SER,SSER=GSCPAPER))', '_blank')});
 }
 
 function createMap() {
