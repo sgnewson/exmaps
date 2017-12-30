@@ -29,7 +29,7 @@ var constants = {
             }
         ]
     }
-}
+};
 
 function initialize() {
     theMap = createMap();
