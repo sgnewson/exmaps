@@ -40,18 +40,22 @@ function initialize() {
 
     setupGeologyButton(theMap);
 
-    $("#gscASeriesButton").click(function() {window.open(geoscanSearchUrl("GSCMAP-A"))});
-    $("#gscPreliminaryButton").click(function() {window.open(geoscanSearchUrl("GSCPRMAP"))});
-    $("#gscPapersButton").click(function() {window.open(geoscanSearchUrl("GSCPAPER"))});
+    $("#gscASeriesButton").click(openUrl("GSCMAP-A"));
+    $("#gscPreliminaryButton").click(openUrl("GSCPRMAP"));
+    $("#gscPapersButton").click(openUrl("GSCPAPER"));
 }
 
-function geoscanSearchUrl(collection) {
-    var minLng = 2000 + -116.08154296875;
-    var maxLng = 2000 + -114.345703125;
-    var minLat = 2000 + 51.27153858904847;
-    var maxLat = 2000 + 52.38498792177971;
+function openUrl(collection) {
+    return function() {
+        var minLng = 2000.0 + parseFloat($("#westBox").text());
+        var maxLng = 2000.0 + parseFloat($("#eastBox").text());
+        var minLat = 2000.0 + parseFloat($("#southBox").text());
+        var maxLat = 2000.0 + parseFloat($("#northBox").text());
 
-    return 'https://geoscan.nrcan.gc.ca/starweb/geoscan/servlet.starweb?path=geoscan/shorte.web&search1=(((MINLNG1="' + minLng + '":A W/O MAXLNG1=_:"' + maxLng + '") W/O (MINLAT1="' + minLat + '":A W/O MAXLAT1=_:"' + maxLat + '")) AND (SER,SSER=' + collection + '))';
+        var url = 'https://geoscan.nrcan.gc.ca/starweb/geoscan/servlet.starweb?path=geoscan/shorte.web&search1=(((MINLNG1="' + minLng + '":A W/O MAXLNG1=_:"' + maxLng + '") W/O (MINLAT1="' + minLat + '":A W/O MAXLAT1=_:"' + maxLat + '")) AND (SER,SSER=' + collection + '))';
+
+        window.open(url);
+    }
 }
 
 function createMap() {
