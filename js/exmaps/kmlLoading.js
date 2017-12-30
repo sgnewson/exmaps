@@ -54,7 +54,7 @@ function renderLayers(googleMap, kmlLayers) {
 function loadLabels(googleMap) {
     $.ajax({
         type: "GET",
-        url: "./js/eXmaps/fieldNames.csv",
+        url: "./js/exmaps/fieldNames.csv",
         dataType: "text",
         success: function (csv_data) {
             var labels = $.csv.toObjects(csv_data);
