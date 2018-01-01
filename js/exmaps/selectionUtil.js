@@ -1,7 +1,5 @@
 ﻿var selectionRectangle = null;
 var mouseDownLatLng = null;
-var selectionBounds = null;
-
 
 function setupSelectionRectangle(map) {
     var mouseDown = false;
@@ -24,8 +22,8 @@ function setupSelectionRectangle(map) {
     });
 }
 
-function createSelection(map, mouseDownLatLng, latLng) {
-    selectionBounds = createSelectionBounds(mouseDownLatLng, latLng);
+function createSelection(map, firstLatLng, secondLatLng) {
+    var selectionBounds = createSelectionBounds(firstLatLng, secondLatLng);
     drawUniqueSelectionRectangle(map, selectionBounds);
 
     $("#northBox").text(selectionBounds.getNorthEast().lat());
@@ -46,8 +44,7 @@ function createSelectionBounds(firstLatLng, secondLatLng) {
     var northEast = new google.maps.LatLng(north, east);
     var southWest = new google.maps.LatLng(south, west);
 
-    var bounds = new google.maps.LatLngBounds(southWest, northEast);
-    return bounds;
+    return new google.maps.LatLngBounds(southWest, northEast);
 }
 
 function drawUniqueSelectionRectangle(map, selectionBounds) {
