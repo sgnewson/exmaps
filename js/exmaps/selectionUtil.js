@@ -40,14 +40,29 @@ function createSelection(map, firstLatLng, secondLatLng) {
     var selectionBounds = createSelectionBounds(firstLatLng, secondLatLng);
     drawUniqueSelectionRectangle(map, selectionBounds);
 
-    $("#northBox").text(selectionBounds.getNorthEast().lat());
-    $("#eastBox").text(selectionBounds.getNorthEast().lng());
-    $("#southBox").text(selectionBounds.getSouthWest().lat());
-    $("#westBox").text(selectionBounds.getSouthWest().lng());
+    var north = selectionBounds.getNorthEast().lat();
+    var east = selectionBounds.getNorthEast().lng();
+    var south = selectionBounds.getSouthWest().lat();
+    var west = selectionBounds.getSouthWest().lng();
+    $("#northBox").text(north);
+    $("#eastBox").text(east);
+    $("#southBox").text(south);
+    $("#westBox").text(west);
+    setExmapsLink(north, east, south, west);
 
     $("#gscASeriesButton").prop('disabled', false);
     $("#gscPreliminaryButton").prop('disabled', false);
     $("#gscPapersButton").prop('disabled', false);
+}
+
+function setExmapsLinkDefault() {
+    var url = window.location;
+    $("#exmapsLink").text(url);
+}
+
+function setExmapsLink(north, east, south, west) {
+    var url = window.location + "?north=" + north + "&east=" + east + "&south=" + south + "&west=" + west;
+    $("#exmapsLink").text(url);
 }
 
 function createSelectionBounds(firstLatLng, secondLatLng) {

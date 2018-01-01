@@ -41,6 +41,7 @@ function initialize() {
     loadLabels(map);
 
     setupGeologyButton(map);
+    setExmapsLinkDefault();
 
     $("#gscASeriesButton").click(openUrl("GSCMAP-A"));
     $("#gscPreliminaryButton").click(openUrl("GSCPRMAP"));
