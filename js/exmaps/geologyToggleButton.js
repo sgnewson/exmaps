@@ -2,31 +2,24 @@ function setupGeologyButton(map) {
     var geologyButton = document.getElementById("toggleGeologyOverlayButton");
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(geologyButton);
 
-    $("#toggleGeologyOverlayButton").click(toggleGeoOverlay);
+    $("#toggleGeologyOverlayButton").click(getToggleGeoOverlay(map));
 }
 
-function toggleGeoOverlay() {
-    geoOverlayIsVisible = !geoOverlayIsVisible;
+function getToggleGeoOverlay(map) {
+    var geoOverlayIsVisible = true;
 
-    clearAllLayers();
+    return function () {
+        geoOverlayIsVisible = !geoOverlayIsVisible;
 
-    if (geoOverlayIsVisible) {
-        showAllLayers();
-    } else {
-        showAlwaysOnLayers();
+        $.each(toggleableLayers.concat(alwaysOnLayers), function (index, layer) {
+            layer.setMap(null);
+        });
+
+        if (geoOverlayIsVisible) {
+            renderLayers(map, toggleableLayers.concat(alwaysOnLayers));
+        } else {
+            renderLayers(map, alwaysOnLayers);
+        }
     }
 }
 
-function clearAllLayers() {
-    $.each(toggleableLayers.concat(alwaysOnLayers), function (index, layer) {
-        layer.setMap(null);
-    });
-}
-
-function showAllLayers() {
-    renderLayers(theMap, toggleableLayers.concat(alwaysOnLayers));
-}
-
-function showAlwaysOnLayers() {
-    renderLayers(theMap, alwaysOnLayers);
-}

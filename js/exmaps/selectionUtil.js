@@ -22,6 +22,20 @@ function setupSelectionRectangle(map) {
     });
 }
 
+function urlSearchParams(map) {
+    // Example:
+    // http://localhost:63342/exmaps/index.html?north=52.956580655415095&east=-115.55419921875&south=52.12134775912647&west=-117.850341796875
+    var searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.has("north") && searchParams.has("east") && searchParams.has("south") && searchParams.has("west")) {
+        var north = searchParams.get("north");
+        var east = searchParams.get("east");
+        var south = searchParams.get("south");
+        var west = searchParams.get("west");
+
+        createSelection(map, new google.maps.LatLng(north, east), new google.maps.LatLng(south, west))
+    }
+}
+
 function createSelection(map, firstLatLng, secondLatLng) {
     var selectionBounds = createSelectionBounds(firstLatLng, secondLatLng);
     drawUniqueSelectionRectangle(map, selectionBounds);

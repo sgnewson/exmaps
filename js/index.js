@@ -1,7 +1,4 @@
-﻿var theMap = null;
-var geoOverlayIsVisible = true;
-
-var constants = {
+﻿var constants = {
     selectionRectangleColor: "#FF0000",
 
     mapBounds: new google.maps.LatLngBounds(
@@ -36,24 +33,14 @@ function initialize() {
     $("#gscPreliminaryButton").prop('disabled', true);
     $("#gscPapersButton").prop('disabled', true);
 
-    theMap = createMap();
-    setupSelectionRectangle(theMap);
+    var map = createMap();
+    setupSelectionRectangle(map);
+    urlSearchParams(map);
 
-    var searchParams = new URLSearchParams(window.location.search);
-    if (searchParams.has("north") && searchParams.has("east") && searchParams.has("south") && searchParams.has("west")) {
-        var north = searchParams.get("north");
-        var east = searchParams.get("east");
-        var south = searchParams.get("south");
-        var west = searchParams.get("west");
+    loadLayers(map);
+    loadLabels(map);
 
-        createSelection(theMap, new google.maps.LatLng(north, east), new google.maps.LatLng(south, west))
-    }
-    //http://localhost:63342/exmaps/index.html?north=52.956580655415095&east=-115.55419921875&south=52.12134775912647&west=-117.850341796875
-
-    loadLayers(theMap);
-    loadLabels(theMap);
-
-    setupGeologyButton(theMap);
+    setupGeologyButton(map);
 
     $("#gscASeriesButton").click(openUrl("GSCMAP-A"));
     $("#gscPreliminaryButton").click(openUrl("GSCPRMAP"));
