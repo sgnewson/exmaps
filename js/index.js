@@ -32,6 +32,10 @@ var constants = {
 };
 
 function initialize() {
+    $("#gscASeriesButton").prop('disabled', true);
+    $("#gscPreliminaryButton").prop('disabled', true);
+    $("#gscPapersButton").prop('disabled', true);
+
     theMap = createMap();
     setupSelectionRectangle(theMap);
 

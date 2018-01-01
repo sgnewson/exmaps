@@ -21,21 +21,21 @@ function setupSelectionRectangle(map) {
         mouseDown = false;
 
         createSelection(map, mouseDownLatLng, event.latLng);
-
-        $("#northBox").text(selectionBounds.getNorthEast().lat());
-        $("#eastBox").text(selectionBounds.getNorthEast().lng());
-        $("#southBox").text(selectionBounds.getSouthWest().lat());
-        $("#westBox").text(selectionBounds.getSouthWest().lng());
-
-        $("#gscASeriesButton").prop('disabled', false);
-        $("#gscPreliminaryButton").prop('disabled', false);
-        $("#gscPapersButton").prop('disabled', false);
     });
 }
 
 function createSelection(map, mouseDownLatLng, latLng) {
     selectionBounds = createSelectionBounds(mouseDownLatLng, latLng);
     drawUniqueSelectionRectangle(map, selectionBounds);
+
+    $("#northBox").text(selectionBounds.getNorthEast().lat());
+    $("#eastBox").text(selectionBounds.getNorthEast().lng());
+    $("#southBox").text(selectionBounds.getSouthWest().lat());
+    $("#westBox").text(selectionBounds.getSouthWest().lng());
+
+    $("#gscASeriesButton").prop('disabled', false);
+    $("#gscPreliminaryButton").prop('disabled', false);
+    $("#gscPapersButton").prop('disabled', false);
 }
 
 function createSelectionBounds(firstLatLng, secondLatLng) {
