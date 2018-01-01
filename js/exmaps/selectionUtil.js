@@ -13,16 +13,14 @@ function setupSelectionRectangle(map) {
 
     google.maps.event.addListener(map, 'mousemove', function (event) {
         if (mouseDown) {
-            selectionBounds = createSelectionBounds(mouseDownLatLng, event.latLng);
-            drawUniqueSelectionRectangle(map, selectionBounds);
+            createSelection(map, mouseDownLatLng, event.latLng);
         }
     });
 
     google.maps.event.addListener(map, 'mouseup', function (event) {
         mouseDown = false;
 
-        selectionBounds = createSelectionBounds(mouseDownLatLng, event.latLng);
-        drawUniqueSelectionRectangle(map, selectionBounds);
+        createSelection(map, mouseDownLatLng, event.latLng);
 
         $("#northBox").text(selectionBounds.getNorthEast().lat());
         $("#eastBox").text(selectionBounds.getNorthEast().lng());
@@ -33,6 +31,11 @@ function setupSelectionRectangle(map) {
         $("#gscPreliminaryButton").prop('disabled', false);
         $("#gscPapersButton").prop('disabled', false);
     });
+}
+
+function createSelection(map, mouseDownLatLng, latLng) {
+    selectionBounds = createSelectionBounds(mouseDownLatLng, latLng);
+    drawUniqueSelectionRectangle(map, selectionBounds);
 }
 
 function createSelectionBounds(firstLatLng, secondLatLng) {
