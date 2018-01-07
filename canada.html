@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ExMaps</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="header">
+        <table width="100%" bgcolor="#93DB70">
+            <tr>
+                <td width="100%">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+        <table width="100%" bgcolor="#238E23">
+            <tr>
+                <td width="100%">&nbsp;</td>
+                <td align="center" width="188">
+                    <b><font size="3" color="#FFFF00">© Moose Oils 2014 Ltd.</font></b>
+                </td>
+            </tr>
+            <tr>
+                <td width="542">
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <font face="Arial" color="#FFFF00" size="4">eXmaps - Canada</font>
+                </td>
+                <td align="center" width="188">
+                    <img border="0" src="img/logo.gif" width="188" height="70">
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    
+    <br/>
+
+    <div id="mapCanvas"></div>
+    
+    <b>Selection bounds:</b>
+    
+    <table id="selectionBounds">
+        <tr>
+            <td>North:</td>
+            <td id="northBox">&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td>East:</td>
+            <td id="eastBox">&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td>South:</td>
+            <td id="southBox">&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td>West:</td>
+            <td id="westBox">&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+    </table>
+
+    <div>
+        <span>GeoScan search:</span>
+        <button id="gscASeriesButton">GSC A-Series maps (geology)</button>
+        <button id="gscPreliminaryButton">GSC Preliminary Maps</button>
+        <button id="gscPapersButton">GSC Papers</button>
+    </div>
+
+    <div>
+        <span>ExMaps link: </span>
+        <span id="exmapsLink"></span>
+    </div>
+
+    <div id="disclaimer">
+        <div id="legal">
+            <span>This website is provided as is, without warranty of any kind. By using this site you agree to these conditions.</span>
+            <h3 style="display: inline-block;"><a href="#" onclick="CoverPop.open();">Legal and Sources</a></h3>
+        </div>
+    </div>
+    
+    <div id="CoverPop-cover" class="splash">
+        <div class="splash-content">
+            <h2>Legal:</h2>
+            <p>All maps and data are for illustrative purposes only. They are not for legal or navigational purposes.</p>
+            <p>Moose Oils 2014 Ltd or Moose Oils Ltd makes no representation, warranties or guarantees, expressed or implied, for the fitness of these maps and data files with respect to intended use. We do not accept responsibility whatsoever for any inaccuracy, errors or omissions in the data files.</p>
+            <p>We shall not be responsible for any costs incurred by a company for the conversion, installation or improvement of the files. We do not guarantee the continuing availability of any data or the consistency of the transfer record format.</p>
+            <p>Any acknowledgements of data sources on this web page do not represent an endorsement of the company or organization by the Moose Oils 2014 Ltd or Moose Oils Ltd. Moose Oils 2014 Ltd or Moose Oils Ltd is not responsible for the accuracy of data acquired from other sources.</p>
+            
+            <div id="CoverPopButtons">
+                <a href="http://mooseoils.com/">Decline</a>
+                <button class="CoverPop-close" href="#">Accept</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAylc1zfHW3bh7W1aA46cZOUTuDE5b0vvM"></script>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="js/jquery/jquery.csv-0.71.min.js"></script>
+<script src="js/infoBox/infoBox.js"></script>
+
+<script src="js/exmaps/kmlLoading.js"></script>
+<script src="js/exmaps/geologyToggleButton.js"></script>
+<script src="js/exmaps/selectionUtil.js"></script>
+<script src="js/exmaps/label.js"></script>
+<link href="css/exmaps.css" rel="stylesheet" />
+<script>
+    var constants = {
+        showGeology: false,
+        selectionRectangleColor: "#FF0000",
+
+        mapBounds: new google.maps.LatLngBounds(
+            new google.maps.LatLng(45, -140),
+            new google.maps.LatLng(80, -55)),
+
+        initialMapOptions: {
+            zoom: 4,
+            maxZoom: 9,
+            minZoom: 4,
+            center: new google.maps.LatLng(57, -100),
+            mapTypeId: google.maps.MapTypeId.TERRAIN,
+            draggable: false,
+            scrollwheel: false,
+            disableDoubleClickZoom: true,
+            disableDefaultUI: false,
+            keyboardShortcuts: true,
+            styles: [
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [
+                        { visibility: "off" }
+                    ]
+                }
+            ]
+        }
+    };
+</script>
+<script src="js/index.js"></script>
+
+<script src="js/coverpop/CoverPop.js"></script>
+<link href="js/coverpop/CoverPop.css" rel="stylesheet" />
+<script>
+    CoverPop.init({
+        coverId: 'CoverPop-cover',
+        expires: 7,
+        cookieName: 'CoverPop_eXmaps_Canada',
+        closeClassNoDefault: 'CoverPop-close',
+        closeClassDefault: 'CoverPop-close-go',
+        forceHash: 'splash',
+        delayHash: 'go',
+        closeOnEscape: false,
+        delay: 0
+    });
+</script>

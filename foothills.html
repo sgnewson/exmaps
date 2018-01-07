@@ -2,22 +2,8 @@
 <html>
 <head>
     <title>ExMaps</title>
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta charset="utf-8" />
-    
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAylc1zfHW3bh7W1aA46cZOUTuDE5b0vvM"></script>
-
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-    <script src="js/jquery/jquery.csv-0.71.min.js"></script>
-    <script src="js/infoBox/infoBox.js"></script>
-
-    <script src="js/exmaps/kmlLoading.js"></script>
-    <script src="js/exmaps/geologyToggleButton.js"></script>
-    <script src="js/exmaps/selectionUtil.js"></script>
-    <script src="js/exmaps/label.js"></script>
-    <link href="css/exmaps.css" rel="stylesheet" />
-
-    <script src="js/index.js"></script>
 </head>
 <body>
     <div id="header">
@@ -41,7 +27,7 @@
                     <font face="Arial" color="#FFFF00" size="4">eXmaps - Foothills of the WCSB</font>
                 </td>
                 <td align="center" width="188">
-                    <img border="0" src="./img/logo.gif" width="188" height="70">
+                    <img border="0" src="img/logo.gif" width="188" height="70">
                 </td>
             </tr>
         </table>
@@ -111,7 +97,53 @@
 </body>
 </html>
 
-<script src="./js/coverpop/CoverPop.js"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAylc1zfHW3bh7W1aA46cZOUTuDE5b0vvM"></script>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="js/jquery/jquery.csv-0.71.min.js"></script>
+<script src="js/infoBox/infoBox.js"></script>
+
+<script src="js/exmaps/kmlLoading.js"></script>
+<script src="js/exmaps/geologyToggleButton.js"></script>
+<script src="js/exmaps/selectionUtil.js"></script>
+<script src="js/exmaps/label.js"></script>
+<link href="css/exmaps.css" rel="stylesheet" />
+<script>
+    var constants = {
+        showGeology: true,
+        selectionRectangleColor: "#FF0000",
+
+        mapBounds: new google.maps.LatLngBounds(
+            new google.maps.LatLng(49, -130),
+            new google.maps.LatLng(60, -110)),
+
+        initialMapOptions: {
+            zoom: 7,
+            maxZoom: 9,
+            minZoom: 5,
+            center: new google.maps.LatLng(52.5, -116),
+            mapTypeId: google.maps.MapTypeId.TERRAIN,
+            draggable: false,
+            scrollwheel: false,
+            disableDoubleClickZoom: true,
+            disableDefaultUI: false,
+            keyboardShortcuts: true,
+            styles: [
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [
+                        { visibility: "off" }
+                    ]
+                }
+            ]
+        }
+    };
+</script>
+<script src="js/index.js"></script>
+
+<script src="js/coverpop/CoverPop.js"></script>
 <link href="js/coverpop/CoverPop.css" rel="stylesheet" />
 <script>
     CoverPop.init({
