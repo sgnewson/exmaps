@@ -40,10 +40,10 @@ function createSelection(map, firstLatLng, secondLatLng) {
     var selectionBounds = createSelectionBounds(firstLatLng, secondLatLng);
     drawUniqueSelectionRectangle(map, selectionBounds);
 
-    var north = selectionBounds.getNorthEast().lat();
-    var east = selectionBounds.getNorthEast().lng();
-    var south = selectionBounds.getSouthWest().lat();
-    var west = selectionBounds.getSouthWest().lng();
+    var north = round(selectionBounds.getNorthEast().lat(), 4);
+    var east = round(selectionBounds.getNorthEast().lng(), 4);
+    var south = round(selectionBounds.getSouthWest().lat(), 4);
+    var west = round(selectionBounds.getSouthWest().lng(), 4);
     $("#northBox").text(north);
     $("#eastBox").text(east);
     $("#southBox").text(south);
@@ -53,6 +53,11 @@ function createSelection(map, firstLatLng, secondLatLng) {
     $("#gscASeriesButton").prop('disabled', false);
     $("#gscPreliminaryButton").prop('disabled', false);
     $("#gscPapersButton").prop('disabled', false);
+}
+
+function round(number, precision) {
+    var offset = Math.pow(10, precision);
+    return Math.round(number * offset) / offset;
 }
 
 function setExmapsLinkDefault() {
