@@ -66,7 +66,8 @@ function setExmapsLinkDefault() {
 }
 
 function setExmapsLink(north, east, south, west) {
-    var url = window.location + "?north=" + north + "&east=" + east + "&south=" + south + "&west=" + west;
+    var urlParams = "?north=" + north + "&east=" + east + "&south=" + south + "&west=" + west;
+    var url = window.location.origin + window.location.pathname + urlParams;
     $("#exmapsLink").text(url);
 }
 
