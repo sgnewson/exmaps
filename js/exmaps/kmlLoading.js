@@ -6,19 +6,19 @@ var alwaysOnLayers = [];
 
 function loadLayers(googleMap) {
     var geologyLayer = {
-        url: "https://www.dropbox.com/s/91hkwlxgyoj7r2j/ExMaps%20surface%20geology.kmz?dl=1",
+        url: "https://sgnewson.github.io/exmaps/maps/surface_geology.kmz",
         clickable: false,
         toggleable: true
     };
 
     var lineLayer = {
-        url: "https://www.dropbox.com/s/tmnqu8lt50dmb3g/ExMaps%20line%20geology.kmz?dl=1",
+        url: "https://sgnewson.github.io/exmaps/maps/line_geology.kmz",
         clickable: false,
         toggleable: true
     };
 
     var fieldsLayer = {
-        url: "https://www.dropbox.com/s/qi8cbahg7m1bs9t/ExMaps%20field%20outlines.kmz?dl=1",
+        url: "https://sgnewson.github.io/exmaps/maps/field_outlines.kmz",
         clickable: false,
         toggleable: false
     };
